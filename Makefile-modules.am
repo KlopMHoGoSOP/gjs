@@ -17,7 +17,7 @@ dist_gjsjs_DATA +=		\
 	modules/promise.js	\
 	modules/format.js
 
-NATIVE_MODULES = libconsole.la libsystem.la
+NATIVE_MODULES = libconsole.la libsystem.la libdom.la
 if ENABLE_CAIRO
 dist_gjsjs_DATA +=		\
 	modules/cairo.js	\
@@ -74,3 +74,13 @@ libconsole_la_LIBADD =				\
 libconsole_la_SOURCES =				\
 	modules/console.h			\
 	modules/console.c
+	
+libdom_la_CFLAGS = $(JS_NATIVE_MODULE_CFLAGS) $(LIBXML2_CFLAGS)
+libdom_la_LIBADD = $(JS_NATIVE_MODULE_LIBADD) $(LIBXML2_LIBS)
+libdom_la_SOURCES =	\
+	modules/xml.h \
+	modules/xml.c \
+	modules/dom-node.h \
+	modules/dom-node.c \
+	modules/dom-parser.h \
+	modules/dom-parser.c

@@ -1,6 +1,6 @@
 /* -*- mode: C; c-basic-offset: 4; indent-tabs-mode: nil; -*- */
 /*
- * Copyright 2013 Red Hat, Inc.
+ * Copyright (c) 2013  Nikita Churaev
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -21,26 +21,11 @@
  * IN THE SOFTWARE.
  */
 
-#include <config.h>
+#ifndef __GJS_XML_H__
+#define __GJS_XML_H__
 
-#include <gjs/native.h>
-#include "modules.h"
+#include <gjs/gjs-module.h>
 
-#ifdef ENABLE_CAIRO
-#include "cairo-module.h"
-#endif
+JSBool gjs_js_define_xml_stuff (JSContext *context, JSObject *module);
 
-#include "system.h"
-#include "console.h"
-#include "xml.h"
-
-void
-gjs_register_static_modules (void)
-{
-#ifdef ENABLE_CAIRO
-    gjs_register_native_module("cairoNative", gjs_js_define_cairo_stuff, 0);
-#endif
-    gjs_register_native_module("system", gjs_js_define_system_stuff, 0);
-    gjs_register_native_module("console", gjs_define_console_stuff, 0);
-    gjs_register_native_module("xml", gjs_js_define_xml_stuff, 0);
-}
+#endif /* __GJS_XML_H__ */

@@ -103,6 +103,10 @@ gjstests_packages="$gjstests_packages $gjs_packages"
 
 PKG_CHECK_MODULES([GOBJECT], [gobject-2.0 >= glib_required_version])
 PKG_CHECK_MODULES([GJS], [$gjs_packages])
+PKG_CHECK_MODULES([LIBXML2], [libxml-2.0 >= 2.9.0])
+AC_SUBST([LIBXML2_LIBS])
+AC_SUBST([LIBXML2_CFLAGS])
+
 AC_ARG_WITH(cairo,
 	    AS_HELP_STRING([--without-cairo], [Use cairo @<:@default=yes@:>@]),
 	    [], [with_cairo=yes])
