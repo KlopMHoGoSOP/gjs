@@ -91,10 +91,6 @@ parse_from_string_func(JSContext *cx, unsigned argc, jsval *vp)
 
             JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(doc_object));
             goto finish;
-        } else if (!strcmp(u_type, "text/html")) {
-            gjs_throw(cx, "HTML parsing is currently not supported");
-            result = JS_FALSE;
-            goto finish;
         } else {
             gjs_throw(cx, "Unsupported type %s", u_type);
             result = JS_FALSE;
